@@ -34,9 +34,6 @@
   "forwardPorts": [8080, 8000],
   "postCreateCommand": "java -version && gradle --version",
   "remoteUser": "vscode",
-  "mounts": [
-    "source=${localWorkspaceFolder}/.idea,target=/home/vscode/.idea,type=bind,consistency=cached"
-  ],
   "remoteEnv": {
     "JAVA_HOME": "/opt/java/openjdk"
   }
