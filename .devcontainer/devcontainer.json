@@ -14,7 +14,9 @@
         "vscjava.vscode-maven",
         "Pivotal.vscode-boot-dev-pack",
         "Pivotal.vscode-spring-boot",
-        "vscjava.vscode-java-dependency"
+        "vscjava.vscode-java-dependency",
+        "ms-azuretools.vscode-docker",
+        "GitHub.copilot"
       ],
       "settings": {
         "java.server.launchMode": "Standard",
