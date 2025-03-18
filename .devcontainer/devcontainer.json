@@ -1,24 +1,43 @@
 {
-    "name": "Spring Boot Dev Container",
-    "dockerFile": "Dockerfile",
-    "context": "..",
-    "settings": {
-        "java.home": "/docker-java-home",
-        "java.configuration.runtimes": [
-            {
-                "name": "JavaSE-23",
-                "path": "/docker-java-home"
-            }
-        ]
-    },
-    "extensions": [
+  "name": "Spring Boot Development with Java 23",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "customizations": {
+    "vscode": {
+      "extensions": [
         "vscjava.vscode-java-pack",
-        "pivotal.vscode-spring-boot",
+        "vmware.vscode-spring-boot",
         "vscjava.vscode-spring-initializr",
         "vscjava.vscode-spring-boot-dashboard",
-        "vscjava.vscode-java-test",
-        "vscjava.vscode-maven"
-    ],
-    "postCreateCommand": "mvn clean install",
-    "remoteUser": "vscode"
+        "redhat.java",
+        "vscjava.vscode-gradle",
+        "vscjava.vscode-maven",
+        "Pivotal.vscode-boot-dev-pack",
+        "Pivotal.vscode-spring-boot",
+        "vscjava.vscode-java-dependency"
+      ],
+      "settings": {
+        "java.server.launchMode": "Standard",
+        "java.configuration.updateBuildConfiguration": "automatic",
+        "java.compile.nullAnalysis.mode": "automatic",
+        "java.jdt.ls.java.home": "/opt/java/openjdk",
+        "java.configuration.runtimes": [
+          {
+            "name": "JavaSE-23",
+            "path": "/opt/java/openjdk",
+            "default": true
+          }
+        ]
+      }
+    }
+  },
+  "forwardPorts": [8080, 8000],
+  "postCreateCommand": "java -version && gradle --version",
+  "remoteUser": "vscode",
+  "mounts": [
+    "source=${localWorkspaceFolder}/.idea,target=/home/vscode/.idea,type=bind,consistency=cached"
+  ],
+  "remoteEnv": {
+    "JAVA_HOME": "/opt/java/openjdk"
+  }
 }
